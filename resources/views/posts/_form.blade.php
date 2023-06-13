@@ -1,10 +1,21 @@
 @csrf 
 
 <label class="uppercase text-gray-700 text-xs">Title</label>
-<input type="text" name="title" class="rounded border-gray-200 text-gray-900 w-full mb-4" value="{{ $post->title }}"></input>
+
+<span class="text-xs text-red-600">
+    @error('title') {{ $message }} @enderror
+</span>
+
+<input type="text" name="title" class="rounded border-gray-200 text-gray-900 w-full mb-4" value="{{ old('title'. $post->title) }}"></input>
 
 <label class="uppercase text-gray-700 text-xs">Content</label>
-<textarea name="body" rows="5" class="rounded border-gray-200 text-gray-900 w-full mb-4">{{ $post->body }}</textarea>
+
+<span class="text-xs text-red-600">
+    @error('body') {{ $message }} @enderror
+</span>
+
+
+<textarea name="body" rows="5" class="rounded border-gray-200 text-gray-900 w-full mb-4">{{ old('body', $post->body) }}</textarea>
 
 <div class="flex justify-between items-center">
 
